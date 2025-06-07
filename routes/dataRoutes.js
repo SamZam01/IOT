@@ -1,6 +1,47 @@
 const express = require('express');
 const router = express.Router();
-const { getdata, visualization } = require('../controllers/dataController');
+const { getdata, visualization, setTestTemperature, getTestTemperature } = require('../controllers/dataController');
+/**
+ * @swagger
+ * /test-temperature:
+ *   post:
+ *     summary: Establece un valor de temperatura de prueba para simulación
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               temperature:
+ *                 type: number
+ *                 example: 35
+ *     responses:
+ *       200:
+ *         description: Temperatura de prueba establecida
+ */
+router.post('/test-temperature', setTestTemperature);
+
+/**
+ * @swagger
+ * /test-temperature:
+ *   get:
+ *     summary: Obtiene la temperatura de prueba configurada
+ *     responses:
+ *       200:
+ *         description: Temperatura de prueba
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 temperature:
+ *                   type: number
+ *       404:
+ *         description: No hay temperatura de prueba configurada
+ */
+router.get('/test-temperature', getTestTemperature);
+
 
 /**
  * @swagger

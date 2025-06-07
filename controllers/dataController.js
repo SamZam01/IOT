@@ -1,5 +1,49 @@
 const { fetchData } = require('../services/externalAPIService');
 
+// Worwi test ↓
+
+let testTemperature = null;
+
+const setTestTemperature = (req, res) => {
+  const { temperature } = req.body;
+
+  if (typeof temperature !== 'number') {
+    return res.status(400).json({ message: 'El campo temperature debe ser un número.' });
+  }
+
+  testTemperature = temperature;
+
+  res.status(200).json({
+    message: 'Temperatura de prueba establecida.',
+    temperature: testTemperature
+  });
+};
+
+const getTestTemperature = (req, res) => {
+  if (testTemperature === null) {
+    return res.status(404).json({ message: 'No hay temperatura de prueba configurada.' });
+  }
+
+  const simulatedResponse = [
+    {
+      device: "TEST123",
+      timestamp: new Date().toISOString(),
+      temperature: testTemperature.toFixed(4),
+      humidity: "50.0",
+      pressure: "1015.12345"
+    },
+    {
+      device: "TEST123",
+      timestamp: new Date().toISOString(),
+      hexData: "TESTDATA1234567890"
+    }
+  ];
+
+  res.json(simulatedResponse);
+};
+
+
+// Worwi test ↑
 
 const getdata = async (req, res) => {
   try {
@@ -24,5 +68,7 @@ const visualization = (req, res) => {
 
 module.exports = {
   getdata,
-  visualization
+  visualization,
+  setTestTemperature,
+  getTestTemperature
 };

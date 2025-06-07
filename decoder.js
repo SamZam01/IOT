@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-// Función para decodificar un string hexadecimal en 3 float32 little-endian
+
 function decodeHexData(hexString) {
   const buffer = Buffer.from(hexString, 'hex');
 
@@ -11,7 +11,7 @@ function decodeHexData(hexString) {
   return { temperature, humidity, pressure };
 }
 
-// Función principal para consumir y decodificar los datos
+
 async function decodeIoTData() {
   try {
     const response = await axios.get('https://callback-iot.onrender.com/data');

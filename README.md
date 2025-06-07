@@ -93,7 +93,7 @@ Se utiliza un archivo HTML con `Chart.js` para graficar la humedad y la presión
 
 ---
 
-## Capturas (añadir manualmente)
+## Capturas
 
 * Ejemplo de respuesta del GET.
 * Captura de POST exitoso.

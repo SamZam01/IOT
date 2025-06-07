@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Visualización IoT</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js CDN -->
+  <style>
+    .charts-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    canvas {
+      flex: 1;
+      min-width: 300px;
+      max-width: 45%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Últimos datos del dispositivo</h1>
+
+    <div class="charts-container">
+      <canvas id="humidityChart"></canvas>
+      <canvas id="pressureChart"></canvas>
+    </div>
+
+    <div id="data-container" class="data-scrollable"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
